@@ -1053,6 +1053,7 @@ class Client(object):
         }
         return self._make_request(self.GRAPHQL_API_URL, query=query)
 
+    @login_required
     def seen_story(self, reel_media_id, reel_media_owner_id, reel_id, reel_media_taken_at, view_seen_at):
         params = {
             'reelMediaId': reel_media_id,
