@@ -1053,6 +1053,19 @@ class Client(object):
         }
         return self._make_request(self.GRAPHQL_API_URL, query=query)
 
+    def seen_story(self, reel_media_id, reel_media_owner_id, reel_id, reel_media_taken_at, view_seen_at):
+        params = {
+            'reelMediaId': reel_media_id,
+            'reelMediaOwnerId': reel_media_owner_id,
+            'reelId': reel_id,
+            'reelMediaTakenAt': reel_media_taken_at,
+            'viewSeenAt': view_seen_at,
+        }
+
+        endpoint = 'https://www.instagram.com/stories/reel/seen'
+        self._init_rollout_hash()
+        return self._make_request(endpoint, params=params)
+
     @login_required
     def reels_feed(self, reel_ids, **kwargs):
         """
